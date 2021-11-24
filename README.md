@@ -1,5 +1,13 @@
 # OAUTH SERVER
 
+## How to compile
+
+   * `cd oauth-svr`
+   * `npm install`
+   * *Compile*: `npm run compile`
+   * *Run tests*: `npm run test`
+   * *Run locally*: `sam `
+
 ## Endpoints
 
    * LOGIN: *POST* `/login { "userId": "", "password": "" }` -> TOKEN
@@ -11,7 +19,7 @@
 
 <hr>
 
-# *** LEGACY ***
+# *** Generated Stuff ***
 
 # aws-oauth-svr
 
