@@ -1,0 +1,37 @@
+{
+  "name": "hello_world",
+  "version": "1.0.0",
+  "description": "hello world sample for NodeJS",
+  "main": "src-ts/GetUserHandler.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs"
+  },
+  "author": "SAM CLI",
+  "license": "MIT",
+  "dependencies": {
+    "@testdeck/mocha": "^0.2.0",
+    "axios": "^0.21.1"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "test": "./node_modules/.bin/_mocha 'tests/**/*.ts'"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.51",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^13.13.5",
+    "ts-node": "^10.4.0",
+    "aws-sdk": "^2.655.0",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "ts-mockito": "^2.6.1",
+    "@testdeck/mocha": "^0.2.0",
+    "typescript": "^3.8.3"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": []
+}

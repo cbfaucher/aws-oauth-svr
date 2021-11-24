@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/aws-oauth-svr.iml" filepath="$PROJECT_DIR$/aws-oauth-svr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oauth-svr/oauth-svr.iml" filepath="$PROJECT_DIR$/oauth-svr/oauth-svr.iml" />
     </modules>
   </component>
 </project>
