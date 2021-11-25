@@ -6,7 +6,8 @@
    * `npm install`
    * *Compile*: `npm run compile`
    * *Run tests*: `npm run test`
-   * *Run locally*: `sam `
+   * *Run locally*: `sudo sam local start-api`
+   * *Deploy to AWS*: `sam deploy [--guided]` or `sam deploy --config-file samconfig.toml`
 
 ## Endpoints
 

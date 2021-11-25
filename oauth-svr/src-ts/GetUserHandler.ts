@@ -6,7 +6,7 @@ import {
     APIGatewayProxyResult
 } from "aws-lambda";
 import {AWSError} from "aws-sdk";
-import {GetItemOutput} from "aws-sdk/clients/dynamodb";
+import {GetItemInput, GetItemOutput} from "aws-sdk/clients/dynamodb";
 //import {User} from "User";
 
 // Load the AWS SDK for Node.js
@@ -17,14 +17,6 @@ AWS.config.update({region: 'us-east-1'});
 
 // Create the DynamoDB service object
 var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
-
-var params = {
-    TableName: 'OAuthSvrUsers',
-    Key: {
-        'UserId': {N: '001'}
-    },
-    ProjectionExpression: 'ATTRIBUTE_NAME'
-}
 
 let response;
 
@@ -44,21 +36,26 @@ export const getUserHandler = async (event: APIGatewayProxyEvent): Promise<APIGa
 
     const { userId } = event.pathParameters;
 
-    console.log("Entering: GET USER: " + userId)
     try {
 
-        var user:User = null;
-        ddb.getItem(params, function(err:AWSError, data:GetItemOutput) {
-            if (err) {
-                console.log("Error", err);
-                user = null;
-            } else {
-                console.log("Success", data.Item);
-                user = new User(data.Item.userId.N, data.Item.name.N, data.Item.password.N)
-            }
-        })
+        var params: GetItemInput = {
+            TableName: 'OAuthSvrUsers',
+            Key: {
+                'UserId': {S: userId}
+            },
+            ProjectionExpression: 'UserId,FullName,Password'
+        }
+        console.log("Entering: GET USER: " + userId + " / Params=" + JSON.stringify(params));
 
-        console.log("USER Found: " + user)
+        var user:User = null;
+        const dbResult = await ddb.getItem(params).promise();
+        if (dbResult.$response.error) {
+            console.error("Failure fetching Object: " + dbResult.$response.error);
+        } else {
+            console.log("DB Result is " + JSON.stringify(dbResult));
+            user = dbResult.Item;
+            console.log("Object found: " + JSON.stringify(user));
+        }
 
         if (user == null) {
             response = {
@@ -68,10 +65,7 @@ export const getUserHandler = async (event: APIGatewayProxyEvent): Promise<APIGa
         } else {
             response = {
                 'statusCode': 200,
-                'body': JSON.stringify({
-                    userId: userId,
-                    user: user
-                })
+                'body': JSON.stringify(user)
             }
         }
 

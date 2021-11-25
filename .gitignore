@@ -19,6 +19,9 @@
 ### IntelliJ ###
 .idea/workspace.xml
 
+### AWS ###
+sam-access-key.txt
+
 ### Node ###
 # Logs
 logs
