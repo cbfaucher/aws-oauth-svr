@@ -1,0 +1,11 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "oauth-svr"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-xznzd2wqlqej"
+s3_prefix = "oauth-svr"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = []

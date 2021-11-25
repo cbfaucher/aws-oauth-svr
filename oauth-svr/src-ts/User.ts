@@ -1,24 +1,24 @@
 
 class User {
-    private _userId: String;
-    private _name: String;
-    private _password: String;
+    private _userId: string;
+    private _fullName: string;
+    private _password: string;
 
-    constructor(userId: String, name: String, password: String) {
+    constructor(userId: string, name: string, password: string) {
         this._userId = userId;
-        this._name = name;
+        this._fullName = name;
         this._password = password
     }
 
-    get userId(): String {
+    get userId(): string {
         return this._userId;
     }
 
-    get name(): String {
-        return this._name;
+    get fullName(): string {
+        return this._fullName;
     }
 
-    get password(): String {
+    get password(): string {
         return this._password;
     }
 }
